@@ -34,7 +34,7 @@ fn parse_commands(lines: &Vec<String>) -> Vec<(Command, i64)> {
         .collect()
 }
 
-fn part_2(lines: &Vec<String>) -> Result<(), Box<dyn Error>> {
+fn part_2(lines: &Vec<String>) {
     let position = parse_commands(lines).into_iter().fold(
         (0, 0, 0),
         |(horz, depth, aim), (cmd, amt)| match cmd {
@@ -49,10 +49,9 @@ fn part_2(lines: &Vec<String>) -> Result<(), Box<dyn Error>> {
         position,
         position.0 * position.1
     );
-    Ok(())
 }
 
-fn part_1(lines: &Vec<String>) -> Result<(), Box<dyn Error>> {
+fn part_1(lines: &Vec<String>) {
     let position = parse_commands(lines)
         .into_iter()
         .fold((0, 0), |(horz, depth), (cmd, amt)| match cmd {
@@ -65,16 +64,14 @@ fn part_1(lines: &Vec<String>) -> Result<(), Box<dyn Error>> {
         position,
         position.0 * position.1
     );
-
-    Ok(())
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
     println!("day 2");
 
     let lines = read_file("inputs/2.txt")?;
-    part_1(&lines)?;
-    part_2(&lines)?;
+    part_1(&lines);
+    part_2(&lines);
 
     Ok(())
 }
