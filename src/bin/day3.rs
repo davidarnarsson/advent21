@@ -26,7 +26,6 @@ fn filter_count(
     numbers: Vec<u32>,
     line_length: usize,
     filter_cb: &dyn Fn(u32, u32) -> bool,
-    tie_breaker: u32,
 ) -> u32 {
     let mut remainder = Vec::from(numbers);
 
@@ -45,10 +44,6 @@ fn filter_count(
 
         let mut count = min(1, max(0, counted)) as u32;
 
-        if counted == 0 {
-            count = tie_breaker;
-        }
-
         remainder = remainder
             .into_iter()
             .filter(|n| {
@@ -63,8 +58,8 @@ fn filter_count(
 fn part_2(lines: &Vec<String>) {
     let (numbers, _counts, line_length) = count_numbers(lines);
 
-    let a = filter_count(numbers.clone(), line_length, &|a, b| a == b, 1);
-    let b = filter_count(numbers.clone(), line_length, &|a, b| a != b, 1);
+    let a = filter_count(numbers.clone(), line_length, &|a, b| a == b;
+    let b = filter_count(numbers.clone(), line_length, &|a, b| a != b);
 
     println!("{} {} {}", a, b, a * b);
 }
